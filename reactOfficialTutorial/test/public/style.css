@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    text-align: right;
+}
+
+.todoBox {
+    width: 300px;
+    margin: auto;
+}
+
+.todo * {
+    display: inline-block;
+}
