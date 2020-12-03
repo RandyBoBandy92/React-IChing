@@ -45,6 +45,7 @@ class Line extends React.Component {
   }
 
   render() {
+    console.log(iChingData)
     return (
       <div>
         <img
