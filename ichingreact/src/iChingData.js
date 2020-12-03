@@ -4,17 +4,26 @@
 // Hexagrams
 
 const iChingData = {
-    lines: {
-        value: "nothing",
-        imgUrls: {
-            nothing: '../images/nothing.png',
-            oldYang: '../images/old_yang.png',
-            oldYin: '../images/old_yin.png',
-            youngYang: '../images/young_yang.png',
-            youngYin: '../images/young_yin.png'
-        }
-    },
-    trigrams: {
-        
+    hexagramNumber: undefined,
+    trigramData: {
+        upperTrigram: {
+            position: "upper",
+            lines: {
+                upper: undefined,
+                middle: undefined,
+                lower: undefined,
+            },
+        },
+        lowerTrigram: {
+            position: "lower",
+            lines: {
+                upper: undefined,
+                middle: undefined,
+                lower: undefined,
+            },
+        },
     }
 }
+
+
+export default iChingData

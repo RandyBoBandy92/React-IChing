@@ -1,5 +1,5 @@
 import React from "react";
-
+import iChingData from './iChingData'
 
 class Line extends React.Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class Trigram extends React.Component {
     render() {
         return (
             <div>
-              <p>I am the {this.props.trigramData.position} trigram</p>
               <Line/>
               <Line/>
               <Line/>
@@ -33,10 +32,8 @@ class Hexagram extends React.Component {
     super(props);
   }
   render() {
-    console.log(this.props.hexagramData.hexagramNumber)
     return (
       <div className="hexagram">
-          <p>I am Hexagram {this.props.hexagramData.hexagramNumber}</p>
           <Trigram
           trigramData={this.props.trigramData.upperTrigram}/>
           <Trigram
@@ -48,29 +45,7 @@ class Hexagram extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hexagramData: {
-        hexagramNumber: undefined,
-      },
-      trigramData: {
-        upperTrigram: {
-          position: "upper",
-          lines: {
-            upper: undefined,
-            middle: undefined,
-            lower: undefined
-          }
-        },
-        lowerTrigram: {
-          position: "lower",
-          lines: {
-            upper: undefined,
-            middle: undefined,
-            lower: undefined
-          }
-        }
-      }
-    };
+    this.state = iChingData
   }
 
   render() {
@@ -78,7 +53,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Hexagram
-        hexagramData={this.state.hexagramData}
+        hexagramData={this.state.hexagramNumber}
         trigramData={this.state.trigramData}
         />
       </div>
