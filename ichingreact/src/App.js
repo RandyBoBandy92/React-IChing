@@ -1,61 +1,76 @@
 import React from "react";
-import iChingData from './iChingData'
+import iChingData from "./iChingData";
 
 class Line extends React.Component {
   constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <p>I am line</p>
-    )
-  }
-}
-class Trigram extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div>
-              <Line/>
-              <Line/>
-              <Line/>
-            </div>
-        )
-    }
-}
-
-class Hexagram extends React.Component {
-  constructor(props) {
     super(props);
+    this.state = {
+      imgSrc: "../images/nothing.png",
+      value: undefined,
+    };
+    this.styles = {
+      width: "200px",
+      border: "2px solid black",
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  getRandomNumber(min, max) {
+    // console.log(Math.floor(Math.random() * (max - min + 1)) + min)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getImagePath(number) {
+    if (number === 6) {
+      return "../images/old_yin.png";
+    } else if (number === 7) {
+      return "../images/young_yang.png";
+    } else if (number === 8) {
+      return "../images/young_yin.png";
+    } else if (number === 9) {
+      return "../images/old_yang.png";
+    } else {
+      return "../images/nothing.png";
+    }
+  }
+
+  handleClick() {
+    // this.setState({imgSrc: '../images/young_yang.png'})
+    let value = this.getRandomNumber(6, 9);
+    let imagePath = this.getImagePath(value);
+    this.setState({
+      value: value,
+      imgSrc: imagePath,
+    });
+  }
+
   render() {
     return (
-      <div className="hexagram">
-          <Trigram
-          trigramData={this.props.trigramData.upperTrigram}/>
-          <Trigram
-          trigramData={this.props.trigramData.lowerTrigram}/>
+      <div>
+        <img
+          onClick={this.handleClick}
+          style={this.styles}
+          src={this.state.imgSrc}
+        />
       </div>
     );
   }
 }
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = iChingData
   }
 
   render() {
-    // console.log(this.state.hexagramData)
     return (
-      <div className="app">
-        <Hexagram
-        hexagramData={this.state.hexagramNumber}
-        trigramData={this.state.trigramData}
-        />
+      <div>
+        <Line />
+        <Line />
+        <Line />
+        <Line />
+        <Line />
+        <Line />
       </div>
     );
   }
