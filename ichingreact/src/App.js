@@ -60,11 +60,16 @@ class Line extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.styles = {
+      margin: "auto",
+      width: "max-content",
+      marginTop: "20px"
+    }
   }
 
   render() {
     return (
-      <div>
+      <div style={this.styles} className="app">
         <Line />
         <Line />
         <Line />
