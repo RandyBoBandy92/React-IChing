@@ -2,7 +2,19 @@ import React from "react";
 import { iChingData, getTrigram } from "./iChingData";
 
 
-
+class IChingText extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div>
+        <h3>Upper Trigram: {this.props.divinationData.trigrams.upper.value}</h3>
+        <h3>Lower Trigram: {this.props.divinationData.trigrams.lower.value}</h3>
+      </div>
+    )
+  }
+}
 class Line extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +25,7 @@ class Line extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div className={`line-${this.props.line.lineNum}`}>
         <img
         src={this.props.line.image}
         style={this.styles}
@@ -34,6 +46,12 @@ class App extends React.Component {
     }
     this.handleLineClick = this.handleLineClick.bind(this)
 
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.lines !== this.state.lines) {
+      this.checkTrigrams()
+    }
   }
 
   makeLinesReadableToHumanPls(linesArray) {
@@ -63,6 +81,7 @@ class App extends React.Component {
       this.upperTrigram = getTrigram(lines.line4.name, lines.line5.name, lines.line6.name)
       console.log(this.upperTrigram)
     }
+    this.updateTrigramsState(this.lowerTrigram, this.upperTrigram)
   }
 
   updateTrigramsState(lowerTrigram, upperTrigram) {
@@ -104,7 +123,6 @@ class App extends React.Component {
         lines: updatedLines
       }
     })
-    this.checkTrigrams()
   }
 
   getName(value) {
@@ -138,6 +156,7 @@ class App extends React.Component {
     return (
       <div style={this.styles} className="app">
         {lineComponents}
+        <IChingText className="divination-text" divinationData={this.state}/>
       </div>
     );
   }
