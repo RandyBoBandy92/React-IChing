@@ -30,23 +30,23 @@ export const iChingData = {
 }
 
 
-export function getTrigram(lowerLineValue, middleLineValue, upperLineValue) {
+export function getTrigram(lowerLineName, middleLineName, upperLineName) {
     // so lets start with thunder
-    if (upperLineValue === 'yin' && middleLineValue === 'yin' && lowerLineValue === 'yang') {
+    if (upperLineName === 'yin' && middleLineName === 'yin' && lowerLineName === 'yang') {
         return 'thunder'
-    } else if (upperLineValue === 'yang' && middleLineValue === 'yang' && lowerLineValue === 'yin') {
+    } else if (upperLineName === 'yang' && middleLineName === 'yang' && lowerLineName === 'yin') {
         return 'wind'
-    } else if (upperLineValue === 'yang' && middleLineValue === 'yin' && lowerLineValue === 'yang') {
+    } else if (upperLineName === 'yang' && middleLineName === 'yin' && lowerLineName === 'yang') {
         return 'fire'
-    } else if (upperLineValue === 'yin' && middleLineValue === 'yin' && lowerLineValue === 'yin') {
+    } else if (upperLineName === 'yin' && middleLineName === 'yin' && lowerLineName === 'yin') {
         return 'earth'
-    } else if (upperLineValue === 'yin' && middleLineValue === 'yang' && lowerLineValue === 'yang') {
+    } else if (upperLineName === 'yin' && middleLineName === 'yang' && lowerLineName === 'yang') {
         return 'lake'
-    } else if (upperLineValue === 'yang' && middleLineValue === 'yang' && lowerLineValue ==='yang') {
+    } else if (upperLineName === 'yang' && middleLineName === 'yang' && lowerLineName ==='yang') {
         return 'heaven'
-    } else if (upperLineValue === 'yin' && middleLineValue === 'yang' && lowerLineValue === 'yin') {
+    } else if (upperLineName === 'yin' && middleLineName === 'yang' && lowerLineName === 'yin') {
         return 'water'
-    } else if (upperLineValue === 'yang' && middleLineValue === 'yin' && lowerLineValue === 'yin') {
+    } else if (upperLineName === 'yang' && middleLineName === 'yin' && lowerLineName === 'yin') {
         return 'mountain'
     }
 }
