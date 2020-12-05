@@ -40,6 +40,14 @@ export const iChingData = {
     hexagramText: {
         primaryHexagramText: undefined,
         transformedHexagramText: undefined
+    },
+    textStyles: {
+        primaryHexText: {
+          display: "block"
+        },
+        transformedHexText: {
+          display: "none"
+        }
     }
 }
 

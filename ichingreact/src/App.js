@@ -91,22 +91,79 @@ class IChingText extends React.Component {
     }
   }
 
+  updateButtonStyles(divinationData) {
+    // how many cases do I have?
+    // in case of no hexagram, display nothing - thats effectively done
+    if (divinationData.hexagram.number) {
+      this.styles.buttonStyles.resetButton.display = "block";
+    }
+    if (
+      divinationData.hexagram.number !== divinationData.hexagram.transformNumber
+    ) {
+      this.styles.buttonStyles.primaryHexButton.display = "block";
+      this.styles.buttonStyles.transHexButton.display = "block";
+    }
+    // in case of just a primary hexagram, display only reset button
+    // in case of primary and transformed hex, display all 3 buttons
+  }
+
   render() {
+    this.styles = {
+      buttonStyles: {
+        primaryHexButton: {
+          display: "none",
+        },
+        transHexButton: {
+          display: "none",
+        },
+        resetButton: {
+          display: "none",
+        },
+      },
+    };
+
+    this.updateButtonStyles(this.props.divinationData);
+
     return (
       <div className="iching-text">
         <div className="button-menu">
-          <button>Primary<br></br> Hexagram</button>
-          <button>Transformed<br></br> Hexagram</button>
-          <button onClick={() => this.props.resetLines()}>Reset</button>
+          <button
+            style={this.styles.buttonStyles.primaryHexButton}
+            onClick={(e) =>
+              this.props.updateTextDisplayState(e.target.innerHTML)
+            }
+          >
+            Primary Hexagram
+          </button>
+          <button
+            style={this.styles.buttonStyles.transHexButton}
+            onClick={(e) =>
+              this.props.updateTextDisplayState(e.target.innerHTML)
+            }
+          >
+            Transformed Hexagram
+          </button>
+          <button
+            style={this.styles.buttonStyles.resetButton}
+            onClick={() => this.props.resetLines()}
+          >
+            Reset
+          </button>
         </div>
         {this.renderFancyTitle(this.props.divinationData)}
-        <div className="primary-hexagram-text">
+        <div
+          className="primary-hexagram-text"
+          style={this.props.styles.primaryHexText}
+        >
           {this.renderDekorneText(
             this.props.divinationData.hexagramText.primaryHexagramText,
             "primary"
           )}
         </div>
-        <div className="transformed-hexagram-text" style={{ display: "block" }}>
+        <div
+          className="transformed-hexagram-text"
+          style={this.props.styles.transformedHexText}
+        >
           {this.renderDekorneText(
             this.props.divinationData.hexagramText.transformedHexagramText,
             "transformed"
@@ -119,7 +176,7 @@ class IChingText extends React.Component {
 class Line extends React.Component {
   constructor(props) {
     super(props);
-    this.auto = true;
+    this.auto = false;
   }
 
   componentDidMount() {
@@ -183,7 +240,8 @@ class App extends React.Component {
       marginTop: "20px",
     };
     this.handleLineClick = this.handleLineClick.bind(this);
-    this.resetLines = this.resetLines.bind(this)
+    this.resetLines = this.resetLines.bind(this);
+    this.updateTextDisplayState = this.updateTextDisplayState.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -238,6 +296,14 @@ class App extends React.Component {
         hexagramText: {
           primaryHexagramText: newPrimaryHexagramText,
           transformedHexagramText: newTransformedHexagramText,
+        },
+        textStyles: {
+          primaryHexText: {
+            display: "block",
+          },
+          transformedHexText: {
+            display: "none",
+          },
         },
       };
     });
@@ -317,8 +383,8 @@ class App extends React.Component {
 
   resetLines() {
     // will reset all lines to factory conditions
-    this.setState(prevState => {
-      const updatedLines = prevState.lines.map(line => {
+    this.setState((prevState) => {
+      const updatedLines = prevState.lines.map((line) => {
         return {
           ...line,
           value: undefined,
@@ -326,14 +392,76 @@ class App extends React.Component {
           image: iChingData.imagePaths.nothing,
           transformImage: iChingData.imagePaths.nothing,
           name: undefined,
-          transformName: undefined
-        }
-      })
+          transformName: undefined,
+        };
+      });
       return {
         ...prevState,
-        lines: updatedLines
-      }
-    })
+        lines: updatedLines,
+        trigrams: {
+          upper: {
+            value: undefined,
+          },
+          lower: {
+            value: undefined,
+          },
+          transformedUpper: {
+            value: undefined,
+          },
+          transformedLower: {
+            value: undefined,
+          },
+        },
+        hexagram: {
+          number: undefined,
+          transformNumber: undefined,
+        },
+        hexagramText: {
+          primaryHexagramText: undefined,
+          transformedHexagramText: undefined,
+        },
+        textStyles: {
+          primaryHexText: {
+            display: "block",
+          },
+          transformedHexText: {
+            display: "none",
+          },
+        },
+      };
+    });
+  }
+
+  updateTextDisplayState(userDesiredTextSection) {
+    if (userDesiredTextSection === "Primary Hexagram") {
+      this.setState((prevState) => {
+        return {
+          ...prevState,
+          textStyles: {
+            primaryHexText: {
+              display: "block",
+            },
+            transformedHexText: {
+              display: "none",
+            },
+          },
+        };
+      });
+    } else if (userDesiredTextSection === "Transformed Hexagram") {
+      this.setState((prevState) => {
+        return {
+          ...prevState,
+          textStyles: {
+            primaryHexText: {
+              display: "none",
+            },
+            transformedHexText: {
+              display: "block",
+            },
+          },
+        };
+      });
+    }
   }
 
   handleLineClick(lineNum) {
@@ -403,7 +531,22 @@ class App extends React.Component {
     return (
       <div style={this.styles} className="app">
         <div className="lines">{lineComponents}</div>
-        <IChingText resetLines={this.resetLines} className="divination-text" divinationData={this.state} />
+        <h5
+          style={
+            this.state.hexagram.number
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
+          Click on the lines to randomly generate yin/yang lines.
+        </h5>
+        <IChingText
+          resetLines={this.resetLines}
+          className="divination-text"
+          divinationData={this.state}
+          styles={this.state.textStyles}
+          updateTextDisplayState={this.updateTextDisplayState}
+        />
       </div>
     );
   }

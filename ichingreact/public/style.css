@@ -9,22 +9,46 @@ html {
 *:after {
   box-sizing: inherit;
 }
+/* iching lines styling */
 
 .lines {
-  min-width: 25%;
-  max-width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  align-items: center;
+  margin: auto;
+  width: 400px;
 }
 
 .line {
-  /* min-width: 400px; */
   display: flex;
   flex-direction: row;
 }
 
 .line img {
-    width: auto;
+    width: 200px;
+}
+
+/* lower portion of app CSS design */
+
+.iching-text {
+  width: 80%;
+  margin: auto;
+}
+
+.button-menu {
+  display: flex;
+  width: 300px;
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.button-menu button {
+  width: 100px;
+  margin: 5px;
+}
+
+/* Stying all my headers */
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
 }
