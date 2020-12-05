@@ -36,6 +36,10 @@ export const iChingData = {
     hexagram: {
         number: undefined,
         transformNumber: undefined
+    },
+    hexagramText: {
+        primaryHexagramText: undefined,
+        transformedHexagramText: undefined
     }
 }
 
@@ -167,4 +171,10 @@ export function getTransformValue(value) {
     } else {
         return value
     }
+}
+
+export function getHexagramText(hexagramNumber) {
+    let hexagramText = require(`./DekorneText/hexagramJSONS/hexagram${hexagramNumber}.json`)
+    // console.log(`hexagram text is ${hexagramText}`)
+    return hexagramText
 }
