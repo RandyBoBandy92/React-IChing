@@ -2,27 +2,22 @@
 // Lines
 // Trigrams
 // Hexagrams
-import oldYinImage from './images/old_yin.png'
-import oldYangImage from './images/old_yang.png'
-import youngYinImage from './images/young_yin.png'
-import youngYangImage from './images/young_yang.png'
-import nothingImage from './images/nothing.png'
 
 export const iChingData = {
     lines: [
-        {value: undefined, transformValue: undefined, lineNum: 6, id: 6, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 5, id: 5, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 4, id: 4, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 3, id: 3, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 2, id: 2, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 1, id: 1, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 6, id: 6, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 5, id: 5, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 4, id: 4, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 3, id: 3, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 2, id: 2, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 1, id: 1, image: process.env.PUBLIC_URL + '/images/nothing.png', transformImage: process.env.PUBLIC_URL + '/images/nothing.png', name: undefined, transformName: undefined},
            ],
     imagePaths: {
-        oldYin: oldYinImage,
-        oldYang: oldYangImage,
-        youngYin: youngYinImage,
-        youngYang: youngYangImage,
-        nothing: nothingImage
+        oldYin: process.env.PUBLIC_URL + '/images/old_yin.png',
+        oldYang: process.env.PUBLIC_URL + '/images/old_yang.png',
+        youngYin: process.env.PUBLIC_URL + '/images/young_yin.png',
+        youngYang: process.env.PUBLIC_URL + '/images/young_yang.png',
+        nothing: process.env.PUBLIC_URL + '/images/nothing.png'
     },
     trigrams: {
         upper: {
