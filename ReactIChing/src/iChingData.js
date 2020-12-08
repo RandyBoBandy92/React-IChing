@@ -2,27 +2,22 @@
 // Lines
 // Trigrams
 // Hexagrams
-import oldYinImage from './images/old_yin.png'
-import oldYangImage from './images/old_yang.png'
-import youngYinImage from './images/young_yin.png'
-import youngYangImage from './images/young_yang.png'
-import nothingImage from './images/nothing.png'
 
 export const iChingData = {
     lines: [
-        {value: undefined, transformValue: undefined, lineNum: 6, id: 6, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 5, id: 5, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 4, id: 4, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 3, id: 3, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 2, id: 2, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
-        {value: undefined, transformValue: undefined, lineNum: 1, id: 1, image: nothingImage, transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 6, id: 6, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 5, id: 5, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 4, id: 4, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 3, id: 3, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 2, id: 2, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
+        {value: undefined, transformValue: undefined, lineNum: 1, id: 1, image: '../images/nothing.png', transformImage: '../images/nothing.png', name: undefined, transformName: undefined},
            ],
     imagePaths: {
-        oldYin: oldYinImage,
-        oldYang: oldYangImage,
-        youngYin: youngYinImage,
-        youngYang: youngYangImage,
-        nothing: nothingImage
+        oldYin: '../images/old_yin.png',
+        oldYang: '../images/old_yang.png',
+        youngYin: '../images/young_yin.png',
+        youngYang: '../images/young_yang.png',
+        nothing: '../images/nothing.png'
     },
     trigrams: {
         upper: {

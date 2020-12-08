@@ -8,6 +8,7 @@ import {
 } from "./iChingData";
 // const testJson = require('./DekorneText/hexagramJSONS/hexagram1.json')
 // console.log(testJson)
+import $ from "jquery";
 
 class IChingText extends React.Component {
   constructor(props) {
